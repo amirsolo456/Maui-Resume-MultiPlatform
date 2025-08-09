@@ -122,10 +122,10 @@ dotnet ef database update     # Apply EF Core migrations to SQL Server
 ### 📞 Contact & Profile
 
 <p align="center">
-  <a href="https://github.com/yourusername">GitHub</a> | 
-  <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> | 
-  <a href="mailto:your.email@example.com">Email</a> | 
-  <a href="https://yourwebsite.com">Website/Portfolio</a>
+  <a href="https://github.com/amirsolo456">GitHub</a> | 
+  <a href="https://www.linkedin.com/in/amir-soleymani-96b481336?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a> | 
+  <a href="mailto:amirsol456@gmail.com">Email</a> | 
+  <a href="https://www.google.com">Website/Portfolio</a>
 </p>
 
 <p align="center">
