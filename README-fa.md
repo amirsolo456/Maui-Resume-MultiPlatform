@@ -1,14 +1,16 @@
  
-<h2 dir="rtl" align="center">
+<h3 dir="rtl" align="center">
   
  🚀 Resume.Maui - نمای کلی پروژه فول‌ استک
 
 ---
-</h2>
+
+</h3>
  
- <h6 dir="ltr" align="left" style="pointer-events: none;">
+ <h5 dir="ltr" align="left" >
     🇮🇷 نسخه فارسی
-</h6>
+    
+</h5>
  <div dir="rtl" align="right">
   
 
