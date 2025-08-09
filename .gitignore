@@ -1,0 +1,35 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.vs/
+.vscode/
+
+# Rider IDE
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# MAUI specific ignores
+**/bin/
+**/obj/
+
+# Don't ignore database file(s)
+# اگر دیتابیست مثلا Resume.db هست، این خط باعث میشه توی گیت ثبت بشه:
+!*.db
