@@ -1,4 +1,4 @@
-﻿namespace Resume.Maui
+﻿namespace Resume.Maui.iOS
 {
     public static class MauiProgram
     {

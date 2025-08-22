@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<SingleProject>true</SingleProject>
-		<!--<OutputType>Exe</OutputType>-->
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>Resume.Maui</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -23,12 +22,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.100" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.100" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Resume.Core\Resume.Core.csproj" />
+	  <ProjectReference Include="..\..\Resume.Maui.Shared\Resume.Maui.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

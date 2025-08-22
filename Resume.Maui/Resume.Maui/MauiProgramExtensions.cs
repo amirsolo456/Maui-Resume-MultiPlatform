@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 
 namespace Resume.Maui
 {
@@ -22,7 +20,5 @@ namespace Resume.Maui
 
             return builder;
         }
-
-    
     }
 }

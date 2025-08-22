@@ -1,7 +1,7 @@
 using ObjCRuntime;
 using UIKit;
 
-namespace Resume.Maui
+namespace Resume.Maui.Mac
 {
     public class Program
     {

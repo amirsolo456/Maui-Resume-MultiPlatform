@@ -1,4 +1,4 @@
-﻿namespace Resume.Maui
+﻿namespace Resume.Maui.Mac
 {
     public static class MauiProgram
     {

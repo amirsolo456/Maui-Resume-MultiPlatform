@@ -1,6 +1,6 @@
 using Foundation;
 
-namespace Resume.Maui
+namespace Resume.Maui.Mac
 {
     [Register(nameof(AppDelegate))]
     public class AppDelegate : MauiUIApplicationDelegate

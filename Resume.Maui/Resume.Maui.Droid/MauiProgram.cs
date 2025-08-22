@@ -1,4 +1,4 @@
-﻿namespace Resume.Maui
+﻿namespace Resume.Maui.Droid
 {
     public static class MauiProgram
     {

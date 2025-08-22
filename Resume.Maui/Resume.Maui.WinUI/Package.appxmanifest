@@ -8,7 +8,7 @@
 
   <Identity Name="com.companyname.resume.maui" Publisher="CN=User Name" Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="5EF690BC-1CAE-4D04-88E9-048240ACA523" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="10259181-09E3-4590-B258-6BA568181F4B" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Resume.Maui</DisplayName>
