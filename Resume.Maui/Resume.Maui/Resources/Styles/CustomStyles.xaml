@@ -11,9 +11,9 @@
     <Style TargetType="telerik:RadEntry" x:Key="customNormalEntry">
         <Setter Property="Margin" Value="0,8,0,8"/>
         <Setter Property="Padding" Value="12,8"/>
-        <Setter Property="PlaceholderColor" Value="{StaticResource ThemePrimaryDarkText}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource ThemePrimaryDarkText}" />
         <Setter Property="TextColor" Value="Black"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource ThemeSecondary}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSecondary}" />
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="FontSize" Value="16"/>
@@ -23,7 +23,7 @@
         <Setter Property="Margin" Value="0,8,0,8"/>
         <Setter Property="Padding" Value="12,8"/>
         <Setter Property="TextColor" Value="Black"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource ThemeSecondary}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource ThemeSecondary}" />
         <Setter Property="FontSize" Value="16"/>
     </Style>
 

@@ -1,4 +1,5 @@
-﻿using Resume.Maui.Resources.Themes;
+﻿using Microsoft.Maui.Controls;
+using Resume.Maui.Resources.Themes;
 
 namespace Resume.Maui
 {
@@ -18,9 +19,29 @@ namespace Resume.Maui
             if (SelectedTheme == ThemeName) return;
 
             var themeToBeApplied = _themesMap[ThemeName];
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(themeToBeApplied);
+            ICollection<ResourceDictionary> mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+            if (mergedDictionaries != null)
+            {
+                mergedDictionaries.Clear();
+                mergedDictionaries.Add(themeToBeApplied);
+            }
+
+            //Application.Current.Resources.MergedDictionaries.Remove(_themesMap[SelectedTheme]);
+            //Application.Current.Resources.MergedDictionaries.Add(themeToBeApplied);
             SelectedTheme = ThemeName;
+
+            try
+            {
+                AppTheme currentTheme = Application.Current.RequestedTheme;
+                currentTheme= ((SelectedTheme != nameof(Resume.Maui.Resources.Themes.Light)) ? AppTheme.Dark : AppTheme.Light);
+
+                Application.Current.UserAppTheme = ((SelectedTheme != nameof(Resume.Maui.Resources.Themes.Light)) ? AppTheme.Dark : AppTheme.Light);
+ 
+            }
+            catch (Exception)
+            {
+ 
+            }
         }
     }
 }

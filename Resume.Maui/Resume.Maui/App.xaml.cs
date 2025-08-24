@@ -7,10 +7,12 @@
             try
             {
                 InitializeComponent();
+                Application.Current.UserAppTheme = AppTheme.Unspecified;
+                var b = AppInfo.Current.RequestedTheme;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("خطا:"+ex.Message);
 
             }       
         }

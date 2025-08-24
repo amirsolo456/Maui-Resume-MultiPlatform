@@ -1,34 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:con="clr-namespace:Resume.Maui.Shared;assembly=Resume.Maui.Shared"
+             xmlns:sharedControls="clr-namespace:Resume.Maui.Shared.Controls;assembly=Resume.Maui.Shared"
+             Title=""
+             NavigationPage.HasNavigationBar="False"
              x:Class="Resume.Maui.MainPage">
 
     <ContentPage.Resources>
-        <!--<ResourceDictionary>
-            <DataTemplate x:Key="navigationItemTemplate">
-                <telerik:RadListView x:Name="listView" ItemsSource="{Binding Source}">
-                    <telerik:RadListView.ItemTemplate>
-                        <DataTemplate>
-                            <telerik:ListViewTextCell    DetailColor="Gray" />
-                        </DataTemplate>
-                    </telerik:RadListView.ItemTemplate>
-                </telerik:RadListView>
+        <ResourceDictionary>
+            <DataTemplate x:Key="aboutmeItemTemp">
+                <sharedControls:ImageFrameCircle ImageSource="myprofilepic.jpg" />
             </DataTemplate>
-        </ResourceDictionary>-->
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ScrollView>
-        <telerik:RadNavigationView x:Name="navigationView" >
+        <telerik:RadNavigationView x:Name="navigationView">
+            <telerik:RadNavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="60" 
+                          ColumnDefinitions="Auto,*"
+                          Padding="10">
+
+                        <Button Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                ImageSource="{DynamicResource  themeImage}"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                Clicked="Button_Clicked"/>
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadNavigationView.HeaderTemplate>
+
             <telerik:RadNavigationView.Items>
-                <telerik:NavigationViewItem Text="Item 1"    /> 
-                                          
-                <telerik:NavigationViewItem Text="Item 2"       />
-                                      
+                <telerik:NavigationViewItem Text="About Me" ContentTemplate="{StaticResource aboutmeItemTemp}"/>
+
+                <telerik:NavigationViewItem Text="Item 2" />
+
                 <telerik:NavigationViewItem Text="Item 3"    />
-                                          
+
                 <telerik:NavigationViewItem Text="Item 4"  />
-                                            
+
                 <telerik:NavigationViewItem Text="Item 5"   />
             </telerik:RadNavigationView.Items>
             <telerik:RadNavigationView.Content>
@@ -36,12 +49,17 @@ xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
                 <telerik:RadDockLayout x:Name="dockLayout">
                     <Grid HeightRequest="60" BackgroundColor="#009688" telerik:RadDockLayout.Dock="Top">
                         <Label Margin="20" Text="Title"/>
+                        <Button Text="Change Theme"
+                                Clicked="Button_Clicked"
+                                VerticalOptions="Center"/>
                     </Grid>
                     <Grid BackgroundColor="#659BFC" ColumnDefinitions="Auto" telerik:RadDockLayout.Dock="Left">
                         <Label Margin="20" Text="Navigation" />
                     </Grid>
                     <Grid BackgroundColor="#1455C9" RowDefinitions="Auto" telerik:RadDockLayout.Dock="Bottom">
-                        <Label Margin="20" Text="Bottom" />
+                        <Button Text="Change Theme"
+                                Clicked="Button_Clicked"
+                                VerticalOptions="Center"/>
                     </Grid>
                     <Grid BackgroundColor="#FCCFB0">
                         <Label Margin="20" Text="Content" />
