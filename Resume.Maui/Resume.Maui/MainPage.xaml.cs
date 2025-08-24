@@ -2,24 +2,10 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        //protected  Dictionary<int,string> Sources =new Dictionary<int, string>() { { 1, "Change Theme"} };
         public MainPage()
         {
             InitializeComponent();
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
     }
-
 }

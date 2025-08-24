@@ -27,9 +27,13 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.100" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.100" />
-	</ItemGroup>
-
+		<PackageReference Include="Telerik.UI.for.Maui" Version="8.0.0" />
+		
+	</ItemGroup> 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\SignaturePad.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\TextInput.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -4,7 +4,15 @@
     {
         public App()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }       
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

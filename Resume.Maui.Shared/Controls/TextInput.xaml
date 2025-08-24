@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Resume.Maui.Shared.Controls.TextInput">
     <VerticalStackLayout>
-        
-   
+        <telerik:RadEntry x:Name="entry"/>
     </VerticalStackLayout>
 </ContentView>
