@@ -35,14 +35,11 @@
 
             <telerik:RadNavigationView.Items>
                 <telerik:NavigationViewItem Text="About Me" ContentTemplate="{StaticResource aboutmeItemTemp}"/>
-
-                <telerik:NavigationViewItem Text="Item 2" />
-
-                <telerik:NavigationViewItem Text="Item 3"    />
-
-                <telerik:NavigationViewItem Text="Item 4"  />
-
-                <telerik:NavigationViewItem Text="Item 5"   />
+                <telerik:NavigationViewItem Text="Skills" />
+                <telerik:NavigationViewItem Text="Experience" />
+                <telerik:NavigationViewItem Text="Education" />
+                <telerik:NavigationViewItem Text="Projects" />
+                <telerik:NavigationViewItem Text="Contact" />
             </telerik:RadNavigationView.Items>
             <telerik:RadNavigationView.Content>
 

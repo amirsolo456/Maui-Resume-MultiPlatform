@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Resume.Core.Models;
+using Resume.Infrastructure;
 
 namespace Resume.Api.Controllers
 {

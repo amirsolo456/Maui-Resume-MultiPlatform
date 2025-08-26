@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Resume.Infrastructure;
 
 #nullable disable
 
@@ -21,6 +22,66 @@ namespace Resume.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Resume.Core.Entities.NavigationItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("KeyName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KeyName")
+                        .IsUnique();
+
+                    b.ToTable("NavigationItems");
+                });
+
+            modelBuilder.Entity("Resume.Core.Models.Contact", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("NavigationItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PersonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NavigationItemId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("Resume.Core.Models.Education", b =>
                 {
                     b.Property<Guid>("Id")
@@ -29,30 +90,39 @@ namespace Resume.Infrastructure.Migrations
 
                     b.Property<string>("Degree")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FieldOfStudy")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("NavigationItemId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("School")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NavigationItemId");
 
                     b.HasIndex("PersonId");
 
@@ -67,19 +137,23 @@ namespace Resume.Infrastructure.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Summary")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.HasKey("Id");
 
@@ -94,20 +168,28 @@ namespace Resume.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<Guid?>("NavigationItemId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NavigationItemId");
 
                     b.HasIndex("PersonId");
 
@@ -120,17 +202,27 @@ namespace Resume.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("PersonId")
+                    b.Property<Guid?>("NavigationItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NavigationItemId");
 
                     b.HasIndex("PersonId");
 
@@ -154,6 +246,9 @@ namespace Resume.Infrastructure.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("NavigationItemId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("PersonId")
                         .HasColumnType("uniqueidentifier");
 
@@ -166,57 +261,118 @@ namespace Resume.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NavigationItemId");
+
                     b.HasIndex("PersonId");
 
                     b.ToTable("WorkExperiences");
                 });
 
+            modelBuilder.Entity("Resume.Core.Models.Contact", b =>
+                {
+                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                        .WithMany("Contacts")
+                        .HasForeignKey("NavigationItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("Resume.Core.Models.Person", "Person")
+                        .WithMany("Contacts")
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("NavigationItem");
+
+                    b.Navigation("Person");
+                });
+
             modelBuilder.Entity("Resume.Core.Models.Education", b =>
                 {
+                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                        .WithMany("Educations")
+                        .HasForeignKey("NavigationItemId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Resume.Core.Models.Person", "Person")
                         .WithMany("Educations")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("NavigationItem");
+
                     b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Resume.Core.Models.Project", b =>
                 {
+                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                        .WithMany("Projects")
+                        .HasForeignKey("NavigationItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Resume.Core.Models.Person", "Person")
                         .WithMany("Projects")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("NavigationItem");
+
                     b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Resume.Core.Models.Skill", b =>
                 {
+                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                        .WithMany("Skills")
+                        .HasForeignKey("NavigationItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Resume.Core.Models.Person", "Person")
                         .WithMany("Skills")
                         .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("NavigationItem");
 
                     b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Resume.Core.Models.WorkExperience", b =>
                 {
+                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                        .WithMany("Experiences")
+                        .HasForeignKey("NavigationItemId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("Resume.Core.Models.Person", "Person")
                         .WithMany("WorkExperiences")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("NavigationItem");
+
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("Resume.Core.Entities.NavigationItem", b =>
+                {
+                    b.Navigation("Contacts");
+
+                    b.Navigation("Educations");
+
+                    b.Navigation("Experiences");
+
+                    b.Navigation("Projects");
+
+                    b.Navigation("Skills");
                 });
 
             modelBuilder.Entity("Resume.Core.Models.Person", b =>
                 {
+                    b.Navigation("Contacts");
+
                     b.Navigation("Educations");
 
                     b.Navigation("Projects");

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Resume.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

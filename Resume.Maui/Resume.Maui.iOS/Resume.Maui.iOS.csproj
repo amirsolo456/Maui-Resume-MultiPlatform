@@ -5,6 +5,8 @@
 		<SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Resume.Maui</RootNamespace>
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseMaui>true</UseMaui>

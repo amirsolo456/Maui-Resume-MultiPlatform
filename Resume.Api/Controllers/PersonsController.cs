@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Resume.Infrastructure.DBContext;
 using Resume.Core.Models;
+using Resume.Infrastructure;
 
 namespace Resume.Api.Controllers
 {

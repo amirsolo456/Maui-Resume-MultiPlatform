@@ -8,7 +8,7 @@ namespace Resume.Infrastructure.DBContext
         public ResumeDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ResumeDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=ResumeDb;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ResumeDb;Integrated Security=True");
 
             return new ResumeDbContext(optionsBuilder.Options);
         }
