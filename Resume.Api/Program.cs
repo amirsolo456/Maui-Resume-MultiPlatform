@@ -1,9 +1,10 @@
 ﻿
 using Resume.Application.Interfaces;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 //builder.Services.AddTransient(typeof(IEducationService));
 //builder.Services.AddScoped<IEducationService,>();
+
+//INSERT INTO[dbo].[NavigationItems] (Id, Title, Icon, KeyName)
+//VALUES
+//(NEWID(), N'About Me', N'myprofilepic.jpg', N'aboutme'),
+//(NEWID(), N'Skills',    N'skills.png', N'skills'),
+//(NEWID(), N'Experience', N'experience.png', N'experience'),
+//(NEWID(), N'Education', N'education.png', N'education'),
+//(NEWID(), N'Projects', N'projects.png', N'projects'),
+//(NEWID(), N'Contact', N'contact.png', N'contact');
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
