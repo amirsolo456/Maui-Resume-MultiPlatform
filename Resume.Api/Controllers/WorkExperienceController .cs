@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Resume.Core.Models;
-using Resume.Infrastructure;
+using Resume.Application.Interfaces;
+using Resume.Domain.Models;
 
 namespace Resume.Api.Controllers
 {
@@ -9,17 +9,17 @@ namespace Resume.Api.Controllers
     [Route("api/[controller]")]
     public class WorkExperienceController : ControllerBase
     {
-        private readonly ResumeDbContext _context;
-        public WorkExperienceController(ResumeDbContext context) => _context = context;
+        private readonly IWorkExperienceService _context;
+        public WorkExperienceController(IWorkExperienceService context) => _context = context;
 
         [HttpGet]
         public async Task<ActionResult<List<WorkExperience>>> GetAll() =>
-            await _context.WorkExperiences.ToListAsync();
+            await _context.GetAllAsync();
 
         [HttpGet("{id}")]
         public async Task<ActionResult<WorkExperience>> GetById(Guid id)
         {
-            var item = await _context.WorkExperiences.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
             return item;
         }
@@ -27,7 +27,7 @@ namespace Resume.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<WorkExperience>> Create(WorkExperience item)
         {
-            _context.WorkExperiences.Add(item);
+            _context.CreateAsync(item);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
         }
@@ -37,7 +37,7 @@ namespace Resume.Api.Controllers
         {
             if (id != updated.Id) return BadRequest();
 
-            var item = await _context.WorkExperiences.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
             item.Company = updated.Company;
@@ -54,10 +54,10 @@ namespace Resume.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var item = await _context.WorkExperiences.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
-            _context.WorkExperiences.Remove(item);
+            _context.DeleteAsync(item);
             await _context.SaveChangesAsync();
             return NoContent();
         }

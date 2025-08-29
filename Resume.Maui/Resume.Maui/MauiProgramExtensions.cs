@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Telerik.Maui.Controls.Compatibility;
 
 namespace Resume.Maui
@@ -9,6 +10,7 @@ namespace Resume.Maui
         {
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .UseTelerik()
                 .ConfigureFonts(fonts =>
                 {
@@ -18,6 +20,10 @@ namespace Resume.Maui
                     fonts.AddFont("IRANSansX-Regular.ttf", "IRANSans");
                     fonts.AddFont("Yekan.ttf", "Yekan");
                 });
+
+            builder.RegisterApiServices();
+            builder.RegisterViews();
+            builder.RegisterViewModels();
 
 #if DEBUG
     		builder.Logging.AddDebug();

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Resume.Infrastructure.DBContext;
-using Resume.Core.Models;
-using Resume.Infrastructure;
+using Resume.Application.Interfaces;
+using Resume.Domain.Models;
+using System;
+using System.Threading.Tasks;
+
 
 namespace Resume.Api.Controllers
 {
@@ -10,35 +12,23 @@ namespace Resume.Api.Controllers
     [Route("api/[controller]")]
     public class PersonsController : ControllerBase
     {
-        private readonly ResumeDbContext _context;
-        private readonly ResumeDbContext _db;
-        public PersonsController(ResumeDbContext db) => _db = db;
- 
+        private readonly IPersonService _context;
+        public PersonsController(IPersonService db) => _context = db;
+
 
         // GET: api/persons
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var persons = await _context.Persons.ToListAsync();
+            var persons = await _context.GetAllAsync();
             return Ok(persons);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
-        {
-            var p = await _db.Persons
-                .Include(x => x.WorkExperiences)
-                .Include(x => x.Educations)
-                .FirstOrDefaultAsync(x => x.Id == id);
-            if (p == null) return NotFound();
-            return Ok(p);
         }
 
         // GET: api/persons/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var person = await _context.Persons.FindAsync(id);
+            var person = await _context.GetByIdAsync(id);
             if (person == null)
                 return NotFound();
 
@@ -49,7 +39,7 @@ namespace Resume.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Person person)
         {
-            _context.Persons.Add(person);
+            _context.CreateAsync(person);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { id = person.Id }, person);
@@ -62,15 +52,16 @@ namespace Resume.Api.Controllers
             if (id !=  person.Id)
                 return BadRequest();
 
-            _context.Entry(person).State = EntityState.Modified;
+
 
             try
             {
+                await _context.CreateAsync(person);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!await PersonExists(id))
                     return NotFound();
                 else
                     throw;
@@ -83,19 +74,25 @@ namespace Resume.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var person = await _context.Persons.FindAsync(id);
-            if (person == null)
-                return NotFound();
-
-            _context.Persons.Remove(person);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            //var person = await _context.DeleteAsync(id);
+            //if (person == null)
+            //    return NotFound();
+            try
+            {
+                await _context.DeleteAsync(id);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return NoContent();
+            
+            }           
         }
 
-        private bool PersonExists(Guid id)
+        private async Task<bool> PersonExists(Guid id)
         {
-            return _context.Persons.Any(e => e.Id == id);
+            return await _context.AnyAsync(id);
         }
     }
 }

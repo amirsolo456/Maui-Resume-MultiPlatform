@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Resume.Core.Models;
-using Resume.Infrastructure;
+using Resume.Application.Interfaces;
+using Resume.Domain.Models;
+
 
 namespace Resume.Api.Controllers
 {
@@ -9,17 +9,20 @@ namespace Resume.Api.Controllers
     [Route("api/[controller]")]
     public class EducationController : ControllerBase
     {
-        private readonly ResumeDbContext _context;
-        public EducationController(ResumeDbContext context) => _context = context;
+        private readonly IEducationService _context;
+        public EducationController(IEducationService context) => _context = context;
 
         [HttpGet]
-        public async Task<ActionResult<List<Education>>> GetAll() =>
-            await _context.Educations.ToListAsync();
+        public async Task<ActionResult<List<Education>>> GetAll()
+        {
+          return  await _context.GetAllAsync();
+        }
+        
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Education>> GetById(Guid id)
         {
-            var item = await _context.Educations.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
             return item;
         }
@@ -27,7 +30,7 @@ namespace Resume.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Education>> Create(Education item)
         {
-            _context.Educations.Add(item);
+            _context.CreateAsync(item);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
         }
@@ -37,7 +40,7 @@ namespace Resume.Api.Controllers
         {
             if (id != updated.Id) return BadRequest();
 
-            var item = await _context.Educations.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
             item.School = updated.School;
@@ -55,10 +58,10 @@ namespace Resume.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var item = await _context.Educations.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
-            _context.Educations.Remove(item);
+            _context.DeleteAsync(item);
             await _context.SaveChangesAsync();
             return NoContent();
         }

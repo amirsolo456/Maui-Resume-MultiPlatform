@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Core", "Resume.Core\Resume.Core.csproj", "{91678A3D-3CE9-47C9-A64F-C2893B83CF1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Domain", "Resume.Core\Resume.Domain.csproj", "{91678A3D-3CE9-47C9-A64F-C2893B83CF1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Infrastructure", "Resume.Infrastructure\Resume.Infrastructure.csproj", "{67555DF7-6B2A-4268-A4C8-B6154BCC9BFB}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume.Maui-Hybrid.Web", "Resume.Maui-Hybrid.Web", "{012E6E2A-8DEF-4BF1-AEDD-B31DBFF92923}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume.Front", "Resume.Front", "{2333231F-7A68-43AF-9501-CB4F4B519F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Application", "Resume.Application\Resume.Application.csproj", "{7BED3C37-8171-4F1F-9F5E-40608CCACF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,6 +197,18 @@ Global
 		{6F8A337A-CDFC-41FA-B27C-9194D3841514}.Release|x64.Build.0 = Release|Any CPU
 		{6F8A337A-CDFC-41FA-B27C-9194D3841514}.Release|x86.ActiveCfg = Release|Any CPU
 		{6F8A337A-CDFC-41FA-B27C-9194D3841514}.Release|x86.Build.0 = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|x64.Build.0 = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Debug|x86.Build.0 = Debug|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x64.ActiveCfg = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x64.Build.0 = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x86.ActiveCfg = Release|Any CPU
+		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

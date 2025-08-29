@@ -20,11 +20,11 @@
 		    <PrivateAssets>all</PrivateAssets>
 		    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		  </PackageReference>
+		  <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Infrastructure\Resume.Infrastructure.csproj" />
-    <ProjectReference Include="..\Resume.Core\Resume.Core.csproj" />
+    <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
   </ItemGroup>
 
 </Project>

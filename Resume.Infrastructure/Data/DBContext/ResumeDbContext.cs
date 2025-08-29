@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Resume.Core.Entities;
-using Resume.Core.Models;
+using Resume.Domain.Models;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 
-namespace Resume.Infrastructure
+namespace Resume.Infrastructure.Data.DBContext
 {
 
     // -- 1. تغییر دیتابیس به حالت SINGLE_USER تا هیچ کانکشنی نداشته باشه

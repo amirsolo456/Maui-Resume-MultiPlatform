@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Resume.Infrastructure.DBContext
+namespace Resume.Infrastructure.Data.DBContext
 {
     public class ResumeDbContextFactory : IDesignTimeDbContextFactory<ResumeDbContext>
     {

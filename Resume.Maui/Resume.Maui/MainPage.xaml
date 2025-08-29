@@ -2,21 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:con="clr-namespace:Resume.Maui.Shared;assembly=Resume.Maui.Shared"
+             xmlns:con="clr-namespace:Resume.Maui.Shared.Controls;assembly=Resume.Maui.Shared"
+             xmlns:vm="clr-namespace:Resume.Maui.Shared.ViewModels;assembly=Resume.Maui.Shared"
+             xmlns:dt="clr-namespace:Resume.Maui.Shared.Core.Entities.MenuItems;assembly=Resume.Maui.Shared"
+             x:DataType="vm:MainPage"
              xmlns:sharedControls="clr-namespace:Resume.Maui.Shared.Controls;assembly=Resume.Maui.Shared"
-             Title=""
              NavigationPage.HasNavigationBar="False"
              x:Class="Resume.Maui.MainPage">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="aboutmeItemTemp">
-                <sharedControls:ImageFrameCircle ImageSource="myprofilepic.jpg" />
+            <DataTemplate x:Key="aboutmeItemTemp" x:DataType="dt:ResponseData">
+                <sharedControls:ImageFrameCircle ImageSource="{Binding Icon}" />
             </DataTemplate>
         </ResourceDictionary>
     </ContentPage.Resources>
+
     <ScrollView>
-        <telerik:RadNavigationView x:Name="navigationView">
+        <telerik:RadNavigationView x:Name="navigationView" 
+                                   ItemsSource="{Binding ItemsResponse}"
+                                   DisplayMemberPath="Title"
+                                   ImageSourcePath="Icon">
+
             <telerik:RadNavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid HeightRequest="60" 
@@ -41,8 +48,8 @@
                 <telerik:NavigationViewItem Text="Projects" />
                 <telerik:NavigationViewItem Text="Contact" />
             </telerik:RadNavigationView.Items>
-            <telerik:RadNavigationView.Content>
 
+            <telerik:RadNavigationView.Content>
                 <telerik:RadDockLayout x:Name="dockLayout">
                     <Grid HeightRequest="60" BackgroundColor="#009688" telerik:RadDockLayout.Dock="Top">
                         <Label Margin="20" Text="Title"/>

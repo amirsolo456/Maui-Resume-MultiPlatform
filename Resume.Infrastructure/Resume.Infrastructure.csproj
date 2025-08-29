@@ -18,14 +18,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Resume.Core\Resume.Core.csproj" />
+    <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

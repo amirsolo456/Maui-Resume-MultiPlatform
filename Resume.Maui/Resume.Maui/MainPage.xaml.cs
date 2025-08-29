@@ -1,11 +1,14 @@
-﻿namespace Resume.Maui
+﻿using Resume.Maui.Shared.ViewModels;
+
+namespace Resume.Maui
 {
     public partial class MainPage : ContentPage
     {
-        //protected  Dictionary<int,string> Sources =new Dictionary<int, string>() { { 1, "Change Theme"} };
+        MainpageViewmodel _mainpageViewmodel;
         public MainPage()
         {
             InitializeComponent();
+            _mainpageViewmodel = new MainpageViewmodel();
         }
 
         private void Button_Clicked(object sender, EventArgs e)

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Resume.Core.Models;
-using Resume.Infrastructure;
+using Resume.Application.Interfaces;
+using Resume.Domain.Models;
+
 
 namespace Resume.Api.Controllers
 {
@@ -9,17 +10,17 @@ namespace Resume.Api.Controllers
     [Route("api/[controller]")]
     public class SkillController : ControllerBase
     {
-        private readonly ResumeDbContext _context;
-        public SkillController(ResumeDbContext context) => _context = context;
+        private readonly ISkillService _context;
+        public SkillController(ISkillService context) => _context = context;
 
         [HttpGet]
         public async Task<ActionResult<List<Skill>>> GetAll() =>
-            await _context.Skills.ToListAsync();
+            await _context.GetAllAsync();
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Skill>> GetById(Guid id)
         {
-            var item = await _context.Skills.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
             return item;
         }
@@ -27,7 +28,7 @@ namespace Resume.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Skill>> Create(Skill item)
         {
-            _context.Skills.Add(item);
+            _context.CreateAsync(item);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
         }
@@ -37,7 +38,7 @@ namespace Resume.Api.Controllers
         {
             if (id != updated.Id) return BadRequest();
 
-            var item = await _context.Skills.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
             item.Name = updated.Name;
@@ -51,10 +52,10 @@ namespace Resume.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var item = await _context.Skills.FindAsync(id);
+            var item = await _context.GetByIdAsync(id);
             if (item == null) return NotFound();
 
-            _context.Skills.Remove(item);
+            _context.DeleteAsync(item);
             await _context.SaveChangesAsync();
             return NoContent();
         }
