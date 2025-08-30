@@ -11,20 +11,24 @@ namespace Resume.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = builder.Configuration.GetConnectionString("CleanArchitectureDb");
-            builder.Services.AddDbContext<IResumeDbContext, Resume.Infrastructure.Data.ResumeDbContext>(options =>
+            // DbContext
+            services.AddDbContext<IResumeDbContext, Resume.Infrastructure.Data.ResumeDbContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("ResumeDb"));
+                options.UseSqlServer(configuration.GetConnectionString("ResumeDb"));
             });
 
-       
-            builder.Services.AddScoped<IEducationService, EducationService>();
-            builder.Services.AddScoped<IPersonService, PersonService>();
-            builder.Services.AddScoped<IProjectService, ProjectService>();
-            builder.Services.AddScoped<IResumeDbContext>(provider => provider.GetRequiredService<Resume.Infrastructure.Data.ResumeDbContext>());
+            // Services
+            //services.AddScoped<IEducationService, EducationService>();
+            //services.AddScoped<IPersonService, PersonService>();
+            //services.AddScoped<IProjectService, ProjectService>();
 
+            // رجیستر DbContext به صورت Interface
+            services.AddScoped<IResumeDbContext>(provider =>
+                provider.GetRequiredService<Resume.Infrastructure.Data.ResumeDbContext>());
+
+            return services;
         }
     }
 }

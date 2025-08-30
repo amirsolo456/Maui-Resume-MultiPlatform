@@ -1,14 +1,15 @@
-﻿
+﻿using Resume.Infrastructure;  // برای دسترسی به AddInfrastructureServices
+using Resume.Application;    // اگر یه متد AddApplicationServices هم داری
 using Resume.Application.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Collections.Generic;
+using Resume.Application.Common;        // برای AddApplicationServices
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 //builder.Services.AddOpenApi();
 
@@ -19,19 +20,15 @@ var builder = WebApplication.CreateBuilder(args);
 //builder.Services.AddTransient(typeof(IEducationService));
 //builder.Services.AddScoped<IEducationService,>();
 
-//INSERT INTO[dbo].[NavigationItems] (Id, Title, Icon, KeyName)
-//VALUES
-//(NEWID(), N'About Me', N'myprofilepic.jpg', N'aboutme'),
-//(NEWID(), N'Skills',    N'skills.png', N'skills'),
-//(NEWID(), N'Experience', N'experience.png', N'experience'),
-//(NEWID(), N'Education', N'education.png', N'education'),
-//(NEWID(), N'Projects', N'projects.png', N'projects'),
-//(NEWID(), N'Contact', N'contact.png', N'contact');
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.AddInfrastructureServices();
+//builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.RegisterModulesByName(builder.Configuration, "Resume.Infrastructure");
+
 var app = builder.Build();
 
 app.UseStaticFiles();

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <ProjectReference Include="..\Resume.Infrastructure\Resume.Infrastructure.csproj"
+				  ReferenceOutputAssembly="false"
+				  OutputItemType="Content"
+				  CopyToOutputDirectory="PreserveNewest" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
 		  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
@@ -25,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Resume.Application\Resume.Application.csproj" />
+    <ProjectReference Include="..\Resume.Infrastructure\Resume.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
