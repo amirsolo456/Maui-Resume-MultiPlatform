@@ -1,14 +1,22 @@
-﻿using Resume.Maui.Shared.ViewModels;
+﻿using Resume.Maui.Shared.Core.Entities.MenuItems;
+using Resume.Maui.Shared.ViewModels;
+using System.Threading.Tasks;
 
 namespace Resume.Maui
 {
     public partial class MainPage : ContentPage
     {
         MainpageViewmodel _mainpageViewmodel;
-        public MainPage()
+        public MainPage(MainpageViewmodel mainpage)
         {
             InitializeComponent();
-            _mainpageViewmodel = new MainpageViewmodel();
+            _mainpageViewmodel = mainpage;
+        }
+
+        protected override  void OnAppearing()
+        {
+            base.OnAppearing();
+            _mainpageViewmodel.PrepareDatas(1);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

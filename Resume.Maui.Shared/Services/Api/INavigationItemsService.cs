@@ -4,6 +4,8 @@ using Resume.Maui.Shared.Core.Entities.MenuItems;
 namespace Resume.Maui.Shared.Services.Api;
 
 public interface INavigationItemsService<Response, Request>
+        where Response : BaseResponse<ResponseData>
+        where Request : BaseRequest<Request>, new()
 {
     Task<Response> GetNavItemsAsync(int PersonID);
     Task<int> GetItemsCountAsync();

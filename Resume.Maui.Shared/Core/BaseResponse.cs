@@ -8,11 +8,11 @@ namespace Resume.Maui.Shared.Core
 {
     public class BaseResponse<T>
     {
-        public T Data { get; set; }
+        public IEnumerable<T> Data { get; set; }
         public int totalCoutn { get; set; }
-        public  Message message { get; set; }
+        public Message message { get; set; }
     }
-
+ 
     public class Message
     {
         public string Result { get; set; }
