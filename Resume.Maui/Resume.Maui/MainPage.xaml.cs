@@ -13,10 +13,13 @@ namespace Resume.Maui
             _mainpageViewmodel = mainpage;
         }
 
-        protected override  void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            _mainpageViewmodel.PrepareDatas(1);
+            if (_mainpageViewmodel != null && _mainpageViewmodel.PrepareDatasCommand.CanExecute(1))
+                _mainpageViewmodel.PrepareDatasCommand.Execute(1);
+
+            this.BindingContext = _mainpageViewmodel;
         }
 
         private void Button_Clicked(object sender, EventArgs e)
