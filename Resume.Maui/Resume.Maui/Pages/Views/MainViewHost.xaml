@@ -41,40 +41,11 @@
                       HasLooping="True">
                 <telerik:RadBorder BackgroundColor="{DynamicResource CustomBackgroundColor}"
                        Style="{StaticResource mainViewHostStyle}">
-                    
-                    <VerticalStackLayout>
-                        <Label Text="Highlighted Controls:"
-                   Style="{StaticResource customTittleLabel}"
-                   Padding="{OnIdiom Desktop=0, Default='0, 0, 99, 0'}" />
-                        <VerticalStackLayout BindableLayout.ItemTemplate="{StaticResource HighlightedControlTemplate}"
-                                 BindableLayout.ItemsSource="{Binding HighlightControls}"
-                                 Margin="0, 6, 0, 12" 
-                                 VerticalOptions="FillAndExpand" />
-                    </VerticalStackLayout>
-                </telerik:RadBorder>
-                <telerik:RadBorder BackgroundColor="{StaticResource AccentColor3}"
-                       Style="{StaticResource BorderStyle}">
-                    <Grid RowDefinitions="Auto, *">
-                        <Label Text="Why Evolve to .NET MAUI?"
-                   Style="{StaticResource TitleHighlightLabelStyle}" />
-                        <views:HighlightsCardsView ItemTemplate="{StaticResource HighlightItemTemplate}"
-                                       ItemTappedCommand="{Binding SelectMauiHighlightCommand}"
-                                       ItemsSource="{Binding MauiHighlights}"
-                                       Grid.Row="1" />
-                    </Grid>
-                </telerik:RadBorder>
-                <telerik:RadBorder BackgroundColor="{StaticResource AccentColor7}"
-                       Style="{StaticResource BorderStyle}">
-                    <Grid RowDefinitions="Auto, *">
-                        <Label Text="Demo Apps"
-                   Style="{StaticResource TitleHighlightLabelStyle}" />
-                        <views:HighlightsCardsView ItemTemplate="{StaticResource DemoAppItemTemplate}"
-                                       ItemTappedCommand="{Binding SelectDemoAppCommand}"
-                                       ItemsSource="{Binding DemoApps}"
-                                       Grid.Row="1" />
-                    </Grid>
-                </telerik:RadBorder>
 
+                    <views:HighlightsCardsView ItemTemplate="{StaticResource DemoAppItemTemplate}"
+                                       ItemTappedCommand="{Binding SelectDemoAppCommand}"
+                                       ItemsSource="{Binding DemoApps}"/>
+                </telerik:RadBorder>
             </telerik:RadSlideView>
         </On>
     </OnPlatform>

@@ -10,72 +10,103 @@
 		<UseMaui>true</UseMaui>
 		<AssemblyName>Resume.Maui.Droid</AssemblyName>
 		<AssemblyTitle>Resume.Maui.Droid</AssemblyTitle>
-		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<UseInterpreter>true</UseInterpreter>
+		<!--<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<SignAssembly>True</SignAssembly>
+		<SignAssembly>False</SignAssembly>
 		<Title>Resume.Maui.Droid</Title>
 		<Authors>Resume.Maui.Droid</Authors>
 		<Company>Resume.Maui.Droid</Company>
 		<Product>Resume.Maui.Droid</Product>
-		<Description>amir soleymani Resume Prj
-			https://github.com/amirsolo456</Description>
+		<Description>amir soleymani Resume Prj https://github.com/amirsolo456</Description>
 		<NeutralLanguage>fa-IR</NeutralLanguage>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<NuGetAudit>False</NuGetAudit>
+		<DelaySign>True</DelaySign>
+		<GeneratePackageOnBuild>Treue</GeneratePackageOnBuild>
+		<PackageId>Resume.Maui.Droid</PackageId>
+		<AndroidUseAapt2>true</AndroidUseAapt2>-->
+
+	</PropertyGroup>
+ 
+
+ 
+	<!--<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<IsAotCompatible>false</IsAotCompatible>
+		<IsTrimmable>False</IsTrimmable>
+		<ApplicationTitle>Resume.Maui.Droid</ApplicationTitle>
+		<DebugSymbols>True</DebugSymbols>
+		<AndroidKeyStore>False</AndroidKeyStore>
+		<UseInterpreter>true</UseInterpreter>
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<PublishTrimmed>false</PublishTrimmed>
+		<IsPublishable>False</IsPublishable>
+		<FileAlignment>1024</FileAlignment>
+		<AndroidUseAapt2>true</AndroidUseAapt2>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <IsAotCompatible>True</IsAotCompatible>
-	  <IsTrimmable>True</IsTrimmable>
-	  <ApplicationTitle>Resume.Maui.Droid</ApplicationTitle>
-	  <DebugSymbols>True</DebugSymbols>
-	  <RunAOTCompilation>True</RunAOTCompilation>
-	  <PublishTrimmed>True</PublishTrimmed>
-	  <TrimMode>copyused</TrimMode>
-	  <AndroidKeyStore>False</AndroidKeyStore>
-	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <IsAotCompatible>True</IsAotCompatible>
-	  <IsTrimmable>True</IsTrimmable>
-	  <ApplicationTitle>Resume.Maui.Droid</ApplicationTitle>
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <DebugSymbols>True</DebugSymbols>
-	  <TrimMode>copyused</TrimMode>
-	  <AndroidKeyStore>False</AndroidKeyStore>
-	</PropertyGroup>
+		<IsAotCompatible>True</IsAotCompatible>
+		<IsTrimmable>False</IsTrimmable>
+		<ApplicationTitle>Resume.Maui.Droid</ApplicationTitle>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<DebugSymbols>True</DebugSymbols>
+		<TrimMode>copyused</TrimMode>
+		<AndroidKeyStore>False</AndroidKeyStore>
+		<PublishTrimmed>false</PublishTrimmed>
+		<RunAOTCompilation>false</RunAOTCompilation>
+		<UseInterpreter>true</UseInterpreter>
+		<AndroidUseAapt2>true</AndroidUseAapt2>
+	</PropertyGroup>-->
 
-	<ItemGroup>
+	<!--<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <IsTrimmable>True</IsTrimmable>
+	  <IsPublishable>False</IsPublishable>
+	  <FileAlignment>1024</FileAlignment>
+	   
+	  <ApplicationTitle>Resume.Maui.Droid</ApplicationTitle>
+	</PropertyGroup>-->
+
+	<!--<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" />
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		--><!--<PackageReference Include="System.ComponentModel.Annotations" />--><!--
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
 		<PackageReference Include="Microsoft.Maui.Controls" />
-
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<PackageReference Include="System.ComponentModel.Annotations" />
+	</ItemGroup>-->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.LegacyThreadSwitchingMembers.txt" />
+		<AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.LegacyThreadSwitchingMembers.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MainThreadAssertingMethods.txt" />
+		<AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MainThreadAssertingMethods.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MainThreadSwitchingMethods.txt" />
+		<AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MainThreadSwitchingMethods.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MembersRequiringMainThread.txt" />
+		<AdditionalFiles Remove="C:\Users\lenovo\.nuget\packages\microsoft.visualstudio.threading.analyzers\17.14.15\buildTransitive\AdditionalFiles\vs-threading.MembersRequiringMainThread.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon.png" />
-	  <AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon_background.png" />
-	  <AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon_foreground.png" />
+		<AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon.png" />
+		<AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon_background.png" />
+		<AndroidResource Include="Resources\values\mipmap-xxxhdpi\appicon_foreground.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Resume.Maui\Resume.Maui.csproj" />
+		<ProjectReference Include="..\Resume.Maui\Resume.Maui.csproj" />
 	</ItemGroup>
 
 </Project>

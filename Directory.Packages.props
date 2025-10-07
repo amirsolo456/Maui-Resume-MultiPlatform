@@ -31,6 +31,7 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.110" />
     <PackageVersion Include="Microsoft.VisualStudio.Utilities" Version="17.14.40264" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageVersion Include="System.Security.Cryptography.Cng" Version="5.0.0" />
     <PackageVersion Include="System.Security.Cryptography.ProtectedData" Version="9.0.9" />
     <PackageVersion Include="Telerik.UI.for.Maui" Version="11.0.0" />

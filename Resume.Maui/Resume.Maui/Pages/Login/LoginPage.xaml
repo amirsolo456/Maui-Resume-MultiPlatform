@@ -6,6 +6,7 @@
              xmlns:Viewmodels="clr-namespace:Resume.Maui.Pages;assembly=Resume.Maui"
              x:DataType="Viewmodels:LoginViewModel"
              x:Class="Resume.Maui.Pages.Login.LoginPage"
+             BackgroundColor="{DynamicResource CustomBackgroundColor}"
              Title="LoginPage">
 
     <ScrollView>
