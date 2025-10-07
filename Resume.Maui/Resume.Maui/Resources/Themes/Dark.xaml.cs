@@ -8,8 +8,5 @@ namespace Resume.Maui.Resources.Themes;
 
 public partial class Dark : ResourceDictionary
 {
-    public Dark()
-    {
-        InitializeComponent();
-    }
+    public Dark() => InitializeComponent();
 }

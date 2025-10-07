@@ -10,7 +10,8 @@ namespace Resume.Api.Controllers
     public class EducationController : ControllerBase
     {
         private readonly IEducationService _context;
-        public EducationController(IEducationService context) => _context = context;
+        public EducationController(IEducationService education) => _context = education;
+
 
         [HttpGet]
         public async Task<ActionResult<List<Education>>> GetAll()

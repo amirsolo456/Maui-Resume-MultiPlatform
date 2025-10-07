@@ -1,0 +1,65 @@
+﻿
+تمام انوتیشن هایی که برای کنترل trim
+استفاده میشه
+
+برای جلوگیری از trim فایل های رسورس و xaml 
+باید از طریق build action  و گزاشتن رو
+Resource یا MauiXaml
+تنظیم شده باشه.
+اگر ResourceDictionary توی App.xaml تعریف نشده و داینامیک لود می‌کنی → حتماً بهش reference مستقیم بده:
+var dict = new ResourceDictionary();
+dict.Source = new Uri("Resources/Styles/Colors.xaml", UriKind.Relative);
+Application.Current.Resources.MergedDictionaries.Add(dict);
+
+با attribute نمی‌شه XAML رو نگه داشت؛ باید یا توی App.xaml تعریف بشه یا با کد بالا دستی اضافه بشه.
+
+برای کل اسمبلی / پروژه
+در .csproj:
+<PropertyGroup>
+  <PublishTrimmed>true</PublishTrimmed>
+  <TrimMode>copyused</TrimMode>
+</PropertyGroup>
+
+copyused → محافظه‌کار (کمترین حذف).
+
+partial → پیش‌فرض، اعضای بی‌استفاده هم حذف می‌شن.
+
+link → شدیدترین.
+
+یا می‌تونی کل پروژه رو Trim نکنی:
+<PublishTrimmed>false</PublishTrimmed>
+یا اسمبلی‌های خاص رو exclude کنی:
+<ItemGroup>
+  <TrimmerRootAssembly Include="Resume.Maui" />
+</ItemGroup>
+
+
+    //[Preserve(AllMembers = true)]
+    //public class MyViewModel
+    //{
+    //    public string Title { get; set; }
+    //}
+
+    //using System.Diagnostics.CodeAnalysis;
+
+    //[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+    //public class MyImportantClass
+    //{
+    //}
+
+    //[RequiresUnreferencedCode("Reflection is used here")]
+    //public void LoadSomething() { }
+
+
+    //[DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(MyViewModel))]
+    //public class MainViewHostViewModel { }
+
+
+
+    #region Fields Trim Annotaions
+    //class Wrapper
+    //{
+    //    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
+    //    public Type TargetType;
+    //}
+    #endregion

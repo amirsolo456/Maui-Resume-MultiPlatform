@@ -26,8 +26,7 @@ namespace Resume.Maui
                 mergedDictionaries.Add(themeToBeApplied);
             }
 
-            //Application.Current.Resources.MergedDictionaries.Remove(_themesMap[SelectedTheme]);
-            //Application.Current.Resources.MergedDictionaries.Add(themeToBeApplied);
+
             SelectedTheme = ThemeName;
 
             try

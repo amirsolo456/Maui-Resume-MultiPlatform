@@ -22,36 +22,68 @@ namespace Resume.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Resume.Core.Entities.NavigationItem", b =>
+            modelBuilder.Entity("Resume.Application.Dtos.MainMenus", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<string>("Icon")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("KeyName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("ImageSource")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("MenuGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MenuItemTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TargetPage")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("KeyName")
-                        .IsUnique();
+                    b.HasIndex("MenuGroupId");
 
-                    b.ToTable("NavigationItems");
+                    b.HasIndex("MenuItemTypeId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("MainMenus");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Contact", b =>
+            modelBuilder.Entity("Resume.Application.Dtos.MenuItemType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ForeignId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MenuItemType");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.Contact", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,7 +114,7 @@ namespace Resume.Infrastructure.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Education", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Education", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,11 +161,66 @@ namespace Resume.Infrastructure.Migrations
                     b.ToTable("Educations");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Person", b =>
+            modelBuilder.Entity("Resume.Domain.Models.MainMenu.MenuGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MenuGroups");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.NavigationItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("KeyName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KeyName")
+                        .IsUnique();
+
+                    b.ToTable("NavigationItems");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.Person", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -145,6 +232,14 @@ namespace Resume.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -155,12 +250,17 @@ namespace Resume.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Project", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Project", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -196,7 +296,40 @@ namespace Resume.Infrastructure.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Skill", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Security.UserToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRevoked")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("PersonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("UserTokens");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.Skill", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -229,7 +362,7 @@ namespace Resume.Infrastructure.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.WorkExperience", b =>
+            modelBuilder.Entity("Resume.Domain.Models.WorkExperience", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -268,14 +401,39 @@ namespace Resume.Infrastructure.Migrations
                     b.ToTable("WorkExperiences");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Contact", b =>
+            modelBuilder.Entity("Resume.Application.Dtos.MainMenus", b =>
                 {
-                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                    b.HasOne("Resume.Domain.Models.MainMenu.MenuGroup", "MenuGroup")
+                        .WithMany("Menus")
+                        .HasForeignKey("MenuGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Resume.Application.Dtos.MenuItemType", "Type")
+                        .WithMany("MainMenus")
+                        .HasForeignKey("MenuItemTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Resume.Application.Dtos.MainMenus", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("MenuGroup");
+
+                    b.Navigation("Parent");
+
+                    b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.Contact", b =>
+                {
+                    b.HasOne("Resume.Domain.Models.NavigationItem", "NavigationItem")
                         .WithMany("Contacts")
                         .HasForeignKey("NavigationItemId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Resume.Core.Models.Person", "Person")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
                         .WithMany("Contacts")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -285,14 +443,14 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Education", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Education", b =>
                 {
-                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                    b.HasOne("Resume.Domain.Models.NavigationItem", "NavigationItem")
                         .WithMany("Educations")
                         .HasForeignKey("NavigationItemId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Resume.Core.Models.Person", "Person")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
                         .WithMany("Educations")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -303,14 +461,14 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Project", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Project", b =>
                 {
-                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                    b.HasOne("Resume.Domain.Models.NavigationItem", "NavigationItem")
                         .WithMany("Projects")
                         .HasForeignKey("NavigationItemId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Resume.Core.Models.Person", "Person")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
                         .WithMany("Projects")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -321,14 +479,25 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Skill", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Security.UserToken", b =>
                 {
-                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
+                        .WithMany("Tokens")
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.Skill", b =>
+                {
+                    b.HasOne("Resume.Domain.Models.NavigationItem", "NavigationItem")
                         .WithMany("Skills")
                         .HasForeignKey("NavigationItemId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Resume.Core.Models.Person", "Person")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
                         .WithMany("Skills")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -338,14 +507,14 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.WorkExperience", b =>
+            modelBuilder.Entity("Resume.Domain.Models.WorkExperience", b =>
                 {
-                    b.HasOne("Resume.Core.Entities.NavigationItem", "NavigationItem")
+                    b.HasOne("Resume.Domain.Models.NavigationItem", "NavigationItem")
                         .WithMany("Experiences")
                         .HasForeignKey("NavigationItemId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("Resume.Core.Models.Person", "Person")
+                    b.HasOne("Resume.Domain.Models.Person", "Person")
                         .WithMany("WorkExperiences")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -356,7 +525,22 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("Resume.Core.Entities.NavigationItem", b =>
+            modelBuilder.Entity("Resume.Application.Dtos.MainMenus", b =>
+                {
+                    b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Resume.Application.Dtos.MenuItemType", b =>
+                {
+                    b.Navigation("MainMenus");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.MainMenu.MenuGroup", b =>
+                {
+                    b.Navigation("Menus");
+                });
+
+            modelBuilder.Entity("Resume.Domain.Models.NavigationItem", b =>
                 {
                     b.Navigation("Contacts");
 
@@ -369,7 +553,7 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Skills");
                 });
 
-            modelBuilder.Entity("Resume.Core.Models.Person", b =>
+            modelBuilder.Entity("Resume.Domain.Models.Person", b =>
                 {
                     b.Navigation("Contacts");
 
@@ -378,6 +562,8 @@ namespace Resume.Infrastructure.Migrations
                     b.Navigation("Projects");
 
                     b.Navigation("Skills");
+
+                    b.Navigation("Tokens");
 
                     b.Navigation("WorkExperiences");
                 });

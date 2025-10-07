@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11012.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Domain", "Resume.Core\Resume.Domain.csproj", "{91678A3D-3CE9-47C9-A64F-C2893B83CF1B}"
 EndProject
@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Web", "Resume.Web\Resume.Web.csproj", "{8D5A9AF0-3F45-4A57-AE24-A701864CC8C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume.Maui.MultiPlatfrom", "Resume.Maui.MultiPlatfrom", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Info.txt = Info.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Maui", "Resume.Maui\Resume.Maui\Resume.Maui.csproj", "{E296D510-1D78-4496-BE33-503DE95231B6}"
 EndProject
@@ -39,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Application", "Resum
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume.Back", "Resume.Back", "{5FCB909B-78A7-402B-B717-F18468982932}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume.Maui.SharedMobile", "Resume.Maui.SharedMobile\Resume.Maui.SharedMobile.csproj", "{4FE65B1E-3868-4415-B431-96CFD776D6E9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resume.Diagram", "Resume.Diagram", "{98690FE6-0EC9-4CDD-B4E6-567CA900AC97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,18 +216,6 @@ Global
 		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x64.Build.0 = Release|Any CPU
 		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x86.ActiveCfg = Release|Any CPU
 		{7BED3C37-8171-4F1F-9F5E-40608CCACF12}.Release|x86.Build.0 = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|x64.Build.0 = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Debug|x86.Build.0 = Debug|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|x64.ActiveCfg = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|x64.Build.0 = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|x86.ActiveCfg = Release|Any CPU
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,7 +237,6 @@ Global
 		{3C0F86D3-45FC-4B80-9887-B00C98E9BA5D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{012E6E2A-8DEF-4BF1-AEDD-B31DBFF92923} = {2333231F-7A68-43AF-9501-CB4F4B519F3B}
 		{7BED3C37-8171-4F1F-9F5E-40608CCACF12} = {5FCB909B-78A7-402B-B717-F18468982932}
-		{4FE65B1E-3868-4415-B431-96CFD776D6E9} = {9BC467D3-24C2-4996-B3F4-1CEA96136E8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EA0B0A4-D4D6-4F69-AFD2-9C9E50A63148}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
+using Resume.Maui.Pages;
 using Resume.Maui.Shared.Core.Entities.MenuItems;
 using Resume.Maui.Shared.Services.Api;
  

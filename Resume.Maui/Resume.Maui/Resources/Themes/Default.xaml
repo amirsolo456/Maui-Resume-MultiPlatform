@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Resume.Maui.Resources.Themes.Default">
 
-    <Color x:Key="Primary">#512BD4</Color>
+    <!--<Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
     <Color x:Key="PrimaryDark">black</Color>
@@ -46,7 +46,11 @@
     <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
-    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
-
+    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>-->
+    <Color x:Key="CustomBorderColor100">#E9E6E6</Color>
+    <Color x:Key="CustomBorderColor200">#A8A4A4</Color>
+    <Color x:Key="CustomBackgroundColor">White</Color>
+    <Color x:Key="CustomTransparentBackgroundColor">Transparent</Color>
+    <Color x:Key="CustomTextColor">black</Color>
     <FileImageSource x:Key="themeImage" File="moon.png"/>
 </ResourceDictionary>

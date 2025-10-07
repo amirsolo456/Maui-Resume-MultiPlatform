@@ -3,13 +3,18 @@
     x:Class="Resume.Maui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Resume.Maui"
+    xmlns:mainpage="clr-namespace:Resume.Maui.Pages"
+    xmlns:commonpages="clr-namespace:Resume.Maui.Pages.Login"
     Shell.FlyoutBehavior="Disabled"
     Title="Resume.Maui">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate mainpage:MainPage}"
         Route="MainPage" />
-
+    
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate commonpages:LoginPage}"
+        Route="LoginPage" />
 </Shell>

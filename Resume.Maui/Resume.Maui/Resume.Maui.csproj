@@ -7,19 +7,51 @@
 		<RootNamespace>Resume.Maui</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<Nullable>enable</Nullable>
+
+
 	</PropertyGroup>
-	
+
 	<PropertyGroup>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<ResolveAssemblyConflicts>true</ResolveAssemblyConflicts>
+		<AssemblyTitle>Resume.Maui</AssemblyTitle>
+		<AssemblyName>Resume.Maui</AssemblyName>
+		<PublishTrimmed>True</PublishTrimmed>
+		<PublishAot>True</PublishAot>
+		<SignAssembly>False</SignAssembly>
+		<PackageId>Resume.Maui</PackageId>
+		<Title>Resume.Maui</Title>
+		<Authors>Resume.Maui</Authors>
+		<Company>am.soleymani</Company>
+		<Product>Resume.Maui</Product>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<NeutralLanguage>fa-IR</NeutralLanguage>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
-	
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<Optimize>True</Optimize>
+		<FileAlignment>1024</FileAlignment>
+		<ApplicationTitle>Resume.Maui</ApplicationTitle>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<FileAlignment>1024</FileAlignment>
+		<ApplicationTitle>Resume.Maui</ApplicationTitle>
+		<DebugType>portable</DebugType>
+		<Optimize>true</Optimize>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		<MauiImage Update="Resources\Images\myprofilepic.jpg">
-		  <CopyToOutputDirectory></CopyToOutputDirectory>
+			<CopyToOutputDirectory></CopyToOutputDirectory>
 		</MauiImage>
 
 		<!-- Custom Fonts -->
@@ -34,27 +66,51 @@
 		<PackageReference Include="Microsoft.Maui.Controls" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
-		<PackageReference Include="Telerik.UI.for.Maui" />
+		<PackageReference Include="ReactiveUI.Maui" />
+		<!--<PackageReference Include="Telerik.UI.for.Maui" />-->
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Resume.Maui.SharedMobile\Resume.Maui.SharedMobile.csproj" />
-	  <ProjectReference Include="..\..\Resume.Maui.Shared\Resume.Maui.Shared.csproj" />
+		<ProjectReference Include="..\..\Resume.Maui.Shared\Resume.Maui.Shared.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Resources\Styles\CustomStyles.xaml">
-	    <Generator></Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Themes\Dark.xaml">
-	    <Generator></Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Themes\Default.xaml">
-	    <Generator></Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Themes\Light.xaml">
-	    <Generator></Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Pages\BasePage\BaseContentView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Mobile\MainPageMobile.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Views\HighlightsCardsView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Views\MainViewHost.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Styles\BaseStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Themes\Dark.xaml">
+			<Generator></Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Themes\Default.xaml">
+			<Generator></Generator>
+		</MauiXaml>
+		<MauiXaml Update="Resources\Themes\Light.xaml">
+			<Generator></Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Data\Models\" />
+		<Folder Include="Data\Common\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 </Project>

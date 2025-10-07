@@ -5,7 +5,7 @@
              x:Class="Resume.Maui.Resources.Themes.Dark"
              xmlns:local="clr-namespace:Resume.Maui.Resources.Themes">
 
-    <Color x:Key="Primary">black</Color>
+    <!--<Color x:Key="Primary">black</Color>
     <Color x:Key="Secondary">black</Color>
     <Color x:Key="Tertiary">black</Color>
     <Color x:Key="PrimaryDark">black</Color>
@@ -47,7 +47,11 @@
     <SolidColorBrush x:Key="Gray500Brush" Color="{StaticResource Gray500}"/>
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
-    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
-
+    <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>-->
+    <Color x:Key="CustomBorderColor100">#E9E6E6</Color>
+    <Color x:Key="CustomBorderColor200">#A8A4A4</Color>
+    <Color x:Key="CustomBackgroundColor">White</Color>
+    <Color x:Key="CustomTransparentBackgroundColor">Transparent</Color>
+    <Color x:Key="CustomTextColor">black</Color>
     <FileImageSource x:Key="themeImage" File="sun.png"/>
 </ResourceDictionary>

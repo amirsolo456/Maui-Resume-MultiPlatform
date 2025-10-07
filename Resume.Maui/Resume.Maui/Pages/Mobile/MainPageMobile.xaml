@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mobileviews="clr-namespace:Resume.Maui.Pages.BasePage"
+             xmlns:mainviews="clr-namespace:Resume.Maui.Pages.Views"
+             x:Class="Resume.Maui.Pages.Mobile.MainPageMobile"
+             Title="MainPageMobile">
+    <ContentPage.Resources>
+
+        <DataTemplate x:Key="ControlsCollectionViewHeaderTemplate">
+            <Grid RowDefinitions="Auto, Auto"
+                  Margin="0, 0, 0, 10">
+                <mainviews:MainViewHost />
+                <Grid Grid.Row="1">
+                    <Label Text="All Controls"
+                           HorizontalOptions="Start"
+                           VerticalOptions="End"
+                           FontSize="{OnPlatform Default=22, Android=24}" />
+                    <telerik:RadButton Command="{Binding NavigateToDownloadTrialCommand}"
+                                       HorizontalOptions="End"
+                                       Style="{StaticResource MoreInfoButtonStyle}"
+                                       MinimumWidthRequest="{OnPlatform iOS=120}"
+                                       MinimumHeightRequest="{OnPlatform iOS=44}"
+                                       AutomationId="moreInfoButton" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="ControlsCollectionViewItemViewStyle" TargetType="telerik:RadCollectionViewItemView">
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1" />
+            <Setter Property="BackgroundColor" Value="{StaticResource ItemBackgroundColor}" />
+            <Setter Property="BorderColor" Value="{StaticResource SeparatorColor}" />
+        </Style>
+    </ContentPage.Resources>
+    <mobileviews:BaseContentView Background="{StaticResource DefaultBackgroundColor}">
+        <mobileviews:BaseContentView.HeaderControlTemplate>
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto, *, Auto"
+                  IgnoreSafeArea="True">
+                    <Image Style="{StaticResource HeaderImageStyle}" />
+                    <Label Grid.Column="1"
+                       Style="{StaticResource HeaderLabelStyle}"
+                       Text="{Binding AppTitle}"
+                       FontSize="{OnIdiom Default=14, Desktop=18}"
+                       Margin="10, 0"
+                       AutomationId="titleLabel" />
+                    <HorizontalStackLayout Grid.Column="2">
+                        <ImageButton Clicked="Settings_Clicked"
+                                 Source="settings.png"
+                                 WidthRequest="35"
+                                 HeightRequest="35"
+                                 Aspect="Center"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="Transparent" />
+                        <ImageButton Clicked="Search_Clicked"
+                                 Source="searchheader.png"
+                                 WidthRequest="35"
+                                 HeightRequest="35"
+                                 Aspect="Center"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="Transparent" 
+                                 AutomationId="searchButton" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </ControlTemplate>
+        </mobileviews:BaseContentView.HeaderControlTemplate>
+            <mobileviews:BaseContentView.BodyControlTemplate>
+                <ControlTemplate>
+                    <telerik:RadCollectionView x:Name="controlsCollectionView"
+                                       Grid.Row="1"
+                                       HeaderTemplate="{StaticResource ControlsCollectionViewHeaderTemplate}"
+                                       ItemTemplate="{StaticResource ControlsCollectionViewItemTemplate}"
+                                       ItemsSource="{Binding Controls}"
+                                       ItemTapped="controlsCollectionView_ItemTapped"
+                                       ItemViewStyle="{StaticResource ControlsCollectionViewItemViewStyle}"
+                                       SelectionMode="None"
+                                       Margin="16, 16, 16, 0"
+                                       AutomationId="controlsCollectionView">
+                        <telerik:RadCollectionView.ItemsLayout>
+                            <telerik:CollectionViewLinearLayout ItemLength="96" />
+                        </telerik:RadCollectionView.ItemsLayout>
+                    </telerik:RadCollectionView>
+                </ControlTemplate>
+            </mobileviews:BaseContentView.BodyControlTemplate>
+    </mobileviews:BaseContentView>
+</ContentPage>

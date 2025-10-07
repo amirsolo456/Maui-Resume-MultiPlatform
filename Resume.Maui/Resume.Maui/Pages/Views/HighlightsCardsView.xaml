@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             x:Class="Resume.Maui.Pages.Views.HighlightsCardsView">
+    <VisualElement.Resources>
+        <OnPlatform x:TypeArguments="Color" x:Key="Color1" Default="{StaticResource CustomPrimaryDark}" />
+        <OnPlatform x:TypeArguments="Color" x:Key="Color2" Default="{StaticResource CustomGray200}" />
+        <OnPlatform x:TypeArguments="Color" x:Key="Color3" Default="{StaticResource CustomGray400}" />
+        <OnPlatform x:TypeArguments="Color" x:Key="Color4" Default="{StaticResource CustomPrimary}" />
+    </VisualElement.Resources>
+
+    <telerik:RadBorder CornerRadius="4"
+                       Margin="0, 6, 0, 12">
+        <Grid x:Name="grid" />
+    </telerik:RadBorder>
+</ContentView>

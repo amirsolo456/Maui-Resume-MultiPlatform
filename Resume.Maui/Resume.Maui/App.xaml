@@ -2,14 +2,26 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Resume.Maui"
+             xmlns:themes="clr-namespace:Resume.Maui.Resources.Themes"
              x:Class="Resume.Maui.App">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+
+                <!-- رنگ‌ها -->
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/MobColors.xaml;assembly=Resume.Maui.Shared" />
+                <ResourceDictionary Source="Resources/Styles/BaseStyles.xaml" />
+
+                <!-- تم‌ها (Light/Dark) -->
+                <ResourceDictionary Source="Resources/Themes/Light.xaml" />
+                <!--<ResourceDictionary Source="{AppThemeBinding Light=Resume.Maui.Resources.Theme.Light, Dark=Resume.Maui.Resources.Dark}" />-->
+
+                <!-- استایل‌ها -->
                 <ResourceDictionary Source="Resources/Themes/Default.xaml" />
-                <!--<ResourceDictionary Source="/Resources/Styles/CustomStyles.xaml;assembly=Resume.Maui" />-->
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

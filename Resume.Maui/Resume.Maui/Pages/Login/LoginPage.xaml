@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Resources="clr-namespace:Resume.Maui.Shared.Resources.Localization;assembly=Resume.Maui.Shared"
+             xmlns:Viewmodels="clr-namespace:Resume.Maui.Pages;assembly=Resume.Maui"
+             x:DataType="Viewmodels:LoginViewModel"
+             x:Class="Resume.Maui.Pages.Login.LoginPage"
+             Title="LoginPage">
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical"
+                     Spacing="40">
+            <VerticalStackLayout Spacing="20">
+                <Label Text="{x:Static Resources:AppResources.UsernamePlaceholder}" />
+                <telerik:RadRegexMaskedEntry
+                         Mask="^((?=.{3,20}$)[A-Za-z0-9._]+|09\d{2}[\s-]?\d{3}[\s-]?\d{4})$"
+                         Value="{Binding LoginUsername, Mode=TwoWay}"
+                         WidthRequest="300"
+                         Placeholder="{x:Static Resources:AppResources.UsernamePlaceholder}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="20">
+                <Label Text="{x:Static Resources:AppResources.EntryPasswordPlaceholder}" />
+                <telerik:RadRegexMaskedEntry x:Name="regexMaskedEntry" 
+                                         Mask="^[a-z]$" 
+                                         AllowNullValue="True"
+                                         Value="{Binding LoginPassword,Mode=TwoWay}"
+                                         Placeholder="{x:Static Resources:AppResources.EntryPasswordPlaceholder}" />
+            </VerticalStackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

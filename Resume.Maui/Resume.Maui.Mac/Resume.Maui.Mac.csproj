@@ -4,15 +4,17 @@
 		<TargetFramework>net9.0-maccatalyst</TargetFramework>
 		<SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>Resume.Maui</RootNamespace>
+		<RootNamespace>Resume.Maui.Mac</RootNamespace>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseMaui>true</UseMaui>
+		<AssemblyName>Resume.Maui.Mac</AssemblyName>
+		<AssemblyTitle>Resume.Maui.Mac</AssemblyTitle>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls"  />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug"  />
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>
 

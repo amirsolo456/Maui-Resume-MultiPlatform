@@ -8,8 +8,8 @@
              x:DataType="vm:MainPage"
              xmlns:sharedControls="clr-namespace:Resume.Maui.Shared.Controls;assembly=Resume.Maui.Shared"
              NavigationPage.HasNavigationBar="False"
-             x:Class="Resume.Maui.MainPage">
-
+             x:Class="Resume.Maui.Pages.MainPage">
+     
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="aboutmeItemTemp" x:DataType="dt:ResponseData">
@@ -66,14 +66,14 @@
                                 VerticalOptions="Center"/>
                     </Grid>
                     <Grid BackgroundColor="#FCCFB0">
-                        <Label Margin="20" Text="Content" />
+                        <!--<ContentPresenter x:Name="mainpageContent"
+                                          Content="{Binding }"
+                                          />-->
+                        <!--<Label Margin="20" Text="Content" />-->
                     </Grid>
                 </telerik:RadDockLayout>
 
             </telerik:RadNavigationView.Content>
         </telerik:RadNavigationView>
-
-
     </ScrollView>
-
 </ContentPage>
