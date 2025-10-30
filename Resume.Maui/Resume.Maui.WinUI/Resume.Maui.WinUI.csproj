@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿	<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -18,12 +18,14 @@
 		<EnableDefaultMauiItems>false</EnableDefaultMauiItems>
 		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>
+		<AssemblyName>Resume.Maui.WinUI</AssemblyName>
+		<AssemblyTitle>Resume.Maui.WinUI</AssemblyTitle>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls"  />
+		<PackageReference Include="Microsoft.Maui.Controls" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility"  />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -47,6 +49,9 @@
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<ProjectCapability Include="Msix" />
 	</ItemGroup>
+	<PropertyGroup Label="Globals">
+	  <WebView2DispatchAdapterNamespace>Resume.Maui.WinUI</WebView2DispatchAdapterNamespace>
+	</PropertyGroup>
 
 	<!--
 		Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution

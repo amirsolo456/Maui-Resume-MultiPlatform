@@ -1,0 +1,128 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable> 
+		<RootNamespace>Resume.Maui.Shared</RootNamespace> 
+		<NeutralLanguage>fa-IR</NeutralLanguage> 
+		<AssemblyTitle>Resume.Maui.Shared</AssemblyTitle> 
+		<AssemblyName>Resume.Maui.Shared</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.HighPerformance" />
+		<PackageReference Include="CommunityToolkit.Maui" />
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
+		<PackageReference Include="Microsoft.VisualStudio.Utilities" />
+		<PackageReference Include="ReactiveUI.Maui" />
+		<PackageReference Include="Telerik.UI.for.Maui" />
+	</ItemGroup> 
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\Localization\AppResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+			<StronglyTypedNamespace>MauiApp.Resources.Localization</StronglyTypedNamespace>
+			<StronglyTypedFileName>$(IntermediateOutputPath)\Resource.Designer.cs</StronglyTypedFileName>
+			<StronglyTypedClassName>AppResources</StronglyTypedClassName>
+			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<Compile Remove="obj\Debug\net9.0\\Resource.Designer.cs" />
+
+		<Compile Include="$(IntermediateOutputPath)\Resource.Designer.cs">
+			<AutoGen>True</AutoGen>
+			<DesignTime>false</DesignTime>
+			<DependentUpon>Resources\Localization\AppResources.resx</DependentUpon>
+		</Compile>
+	  <MauiXaml Update="Controls\DynamicContents\AppContent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\ListCollection.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\SearchBar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\SignaturePad.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\Standalones\LocalizePicker.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\TextInput.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Localization\Strings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\MobBaseStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\MobColors.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\MobStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup> 
+	<ItemGroup>
+	  <Folder Include="Resources\Convertors\" />
+	  <Folder Include="Services\Interfaces\" />
+	</ItemGroup> 
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Localization\AppResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Localization\Strings.xaml.cs">
+	    <DependentUpon>Strings.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Localization\Loc_en.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Loc_en.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Localization\Loc_fa.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Loc_fa.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup> 
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Localization\Loc_en.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Loc_en.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Localization\Loc_fa.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Loc_fa.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup> 
+	<ItemGroup>
+	  <None Update="Controls\Standalones\LocalizePicker.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Resources\Styles\MobBaseStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Resources\Styles\MobStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
+	</ItemGroup>
+
+</Project>

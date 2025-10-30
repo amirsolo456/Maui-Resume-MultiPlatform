@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             xmlns:views="clr-namespace:Resume.Maui.Pages.Views"
+             x:Class="Resume.Maui.Pages.Views.MainViewHost">
+    <ContentView.Resources>
+        <DataTemplate x:Key="HighlightedControlTemplate">
+            <telerik:RadBorder BackgroundColor="{StaticResource CustomBlack}"
+                       BorderThickness="0, 0, 0, 1"
+                       BorderColor="{StaticResource CustomBorderColor100}"
+                       >
+                <View.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BindingContext.SelectControlCommand, Source={RelativeSource AncestorType={Type views:MainViewHost}}}"
+                                  CommandParameter="{Binding}" />
+                </View.GestureRecognizers>
+                <Grid RowDefinitions="Auto, Auto"
+                      ColumnDefinitions="Auto, *"
+                      Margin="6">
+                    <Image Source="{Binding Icon}"
+                           WidthRequest="20"
+                           Grid.RowSpan="2"
+                           Margin="10, 5, 15, 5" />
+                    <Label Text="{Binding DisplayName}"
+                           Grid.Column="1"
+                           Grid.RowSpan="{OnIdiom Desktop=1, Default=2}"
+                           Style="{StaticResource MainHighlightLabelStyle}" 
+                           AutomationId="highlightedControlName"/>
+                    <Label Text="{Binding ShortDescription}"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           IsVisible="{OnIdiom Desktop=true, Default=false}"
+                           Style="{StaticResource SubHighlightLabelStyle}" />
+                </Grid>
+            </telerik:RadBorder>
+        </DataTemplate>
+    </ContentView.Resources>
+    <OnPlatform x:TypeArguments="View">
+        <On Platform="Android, iOS">
+            <telerik:RadSlideView x:Name="slideView"
+                      HasLooping="True">
+                <telerik:RadBorder BackgroundColor="{DynamicResource CustomBackgroundColor}"
+                       Style="{StaticResource mainViewHostStyle}">
+
+                    <views:HighlightsCardsView ItemTemplate="{StaticResource DemoAppItemTemplate}"
+                                       ItemTappedCommand="{Binding SelectDemoAppCommand}"
+                                       ItemsSource="{Binding DemoApps}"/>
+                </telerik:RadBorder>
+            </telerik:RadSlideView>
+        </On>
+    </OnPlatform>
+</ContentView>

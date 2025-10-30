@@ -17,6 +17,9 @@ public partial class MainPage : ObservableObject
     [ObservableProperty]
     private string _errorMessage;
 
+    [ObservableProperty]
+    private View _currentContent;
+
     private readonly INavigationItemsService<Core.Entities.MenuItems.Response, Core.Entities.MenuItems.Request> _navigationItemsService;
 
     public MainPage(INavigationItemsService<Core.Entities.MenuItems.Response, Core.Entities.MenuItems.Request> navigationItems)

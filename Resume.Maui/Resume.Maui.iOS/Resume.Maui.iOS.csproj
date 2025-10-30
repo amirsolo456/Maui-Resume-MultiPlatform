@@ -4,12 +4,14 @@
 		<TargetFramework>net9.0-ios</TargetFramework>
 		<SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>Resume.Maui</RootNamespace>
+		<RootNamespace>Resume.Maui.iOS</RootNamespace>
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseMaui>true</UseMaui>
+		<AssemblyName>Resume.Maui.iOS</AssemblyName>
+		<AssemblyTitle>Resume.Maui.iOS</AssemblyTitle>
 	</PropertyGroup>
 
 	<ItemGroup>

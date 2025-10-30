@@ -2,7 +2,7 @@
 using Resume.Maui.Shared.ViewModels;
 using System.Threading.Tasks;
 
-namespace Resume.Maui
+namespace Resume.Maui.Pages
 {
     public partial class MainPage : ContentPage
     {

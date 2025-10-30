@@ -15,7 +15,7 @@ namespace Resume.Infrastructure.Services
     {
         public void Register(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ResumeDbContext>(options =>
+            services.AddDbContext<Resume.Infrastructure.Data.DBContext.ResumeDbContext>(options =>
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ResumeDb;Integrated Security=True"));
 
             services.AddScoped<IEducationService, EducationService>();
@@ -23,7 +23,7 @@ namespace Resume.Infrastructure.Services
             services.AddScoped<IProjectService, ProjectService>();
 
             services.AddScoped<IResumeDbContext>(provider =>
-    provider.GetRequiredService<Resume.Infrastructure.Data.ResumeDbContext>());
+    provider.GetRequiredService<Resume.Infrastructure.Data.DBContext.ResumeDbContext>());
         }
     }
 }

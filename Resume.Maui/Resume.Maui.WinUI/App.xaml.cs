@@ -18,8 +18,8 @@ namespace Resume.Maui.WinUI
         {
             this.InitializeComponent();
         }
-
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+      
+        protected override Microsoft.Maui.Hosting.MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 
 }

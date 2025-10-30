@@ -1,7 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Resume.Application.Dtos;
+using Resume.Application.Interfaces;
 using Resume.Domain.Models;
+using Resume.Domain.Models.MainMenu;
+using Resume.Domain.Models.Security;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Text.RegularExpressions;
 
 namespace Resume.Infrastructure.Data.DBContext
 {
@@ -17,8 +22,8 @@ namespace Resume.Infrastructure.Data.DBContext
     //-- 3. بازگرداندن دیتابیس به حالت MULTI_USER
     //ALTER DATABASE[ResumeDb]
     //SET MULTI_USER;
-
-    public class ResumeDbContext : DbContext
+ 
+    public class ResumeDbContext : DbContext ,IResumeDbContext
     {
         public ResumeDbContext(DbContextOptions<ResumeDbContext> options) : base(options) { }
 
@@ -29,6 +34,10 @@ namespace Resume.Infrastructure.Data.DBContext
         public DbSet<Skill> Skills => Set<Skill>();
         public DbSet<Project> Projects => Set<Project>();
         public DbSet<Contact> Contacts => Set<Contact>();
+        public DbSet<UserToken> UserTokens => Set<UserToken>();
+        public DbSet<MainMenus> Menus => Set<MainMenus>();
+        public DbSet<MenuItemType> MenuItemType => Set<MenuItemType>();
+        public DbSet<MenuGroup> MenuGroups => Set<MenuGroup>();
         public DbSet<NavigationItem> NavigationItems => Set<NavigationItem>();
         #endregion
 
@@ -41,6 +50,16 @@ namespace Resume.Infrastructure.Data.DBContext
                         .HasIndex(n => n.KeyName)
                         .IsUnique();
             #endregion
+
+            modelBuilder.Entity<MainMenus>()
+                .HasOne(m => m.MenuGroup)                // هر MainMenu یک MenuGroup دارد
+                .WithMany(g => g.Menus)              // هر MenuGroup چند MainMenu دارد
+                .HasForeignKey(m => m.MenuGroupId);      // کلید خارجی
+
+            modelBuilder.Entity<MainMenus>()
+                .HasOne(m => m.Type)                        // هر منو یک MenuItemType دارد
+                .WithMany(t => t.MainMenus)                 // هر MenuItemType می‌تواند چند منو داشته باشد
+                .HasForeignKey(m => m.MenuItemTypeId);      // کلید خارجی در MainMenus
 
             #region Person Relationships
             modelBuilder.Entity<Person>()
@@ -108,4 +127,6 @@ namespace Resume.Infrastructure.Data.DBContext
             #endregion
         }
     }
+
+
 }

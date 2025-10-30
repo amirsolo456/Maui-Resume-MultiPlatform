@@ -14,7 +14,7 @@ namespace Resume.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             // DbContext
-            services.AddDbContext<IResumeDbContext, Resume.Infrastructure.Data.ResumeDbContext>(options =>
+            services.AddDbContext<IResumeDbContext,ResumeDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("ResumeDb"));
             });
@@ -26,7 +26,7 @@ namespace Resume.Infrastructure
 
             // رجیستر DbContext به صورت Interface
             services.AddScoped<IResumeDbContext>(provider =>
-                provider.GetRequiredService<Resume.Infrastructure.Data.ResumeDbContext>());
+                provider.GetRequiredService<ResumeDbContext>());
 
             return services;
         }
